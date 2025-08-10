@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>暮らしの再生 | 政治家公式サイト</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* リセット・ベーススタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* ヘッダー */
+        .site-header {
+            background: #003366;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .main-navigation ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-navigation a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .main-navigation a:hover {
+            color: #ffd700;
+        }
+
+        /* ヒーローセクション */
+        .hero-section {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: #fff;
+            padding: 8rem 1rem 4rem;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 1rem 0 2rem 0;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .content-section {
+            background: #fff;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 0.5rem;
+        }
+
+        /* ビデオセクション */
+        .video-section {
+            text-align: center;
+        }
+
+        .video-embed {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        /* 政策ハイライト */
+        .policy-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .policy-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #003366;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .policy-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .policy-item h3 {
+            color: #003366;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .policy-item i {
+            color: #007bff;
+        }
+
+        /* ボタンスタイル */
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem 0.5rem;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: #003366;
+        }
+
+        .btn-primary:hover {
+            background: #004d99;
+        }
+
+        .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        .btn-outline:hover {
+            background: #007bff;
+            color: #fff;
+        }
+
+        /* ダウンロードグリッド */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .download-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .download-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #003366, #004d99);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .download-content h3 {
+            margin: 0 0 0.5rem 0;
+            color: #003366;
+            font-size: 1.1rem;
+        }
+
+        .file-size {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 写真ギャラリー */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 150px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: transform 0.3s;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* 意見グリッド */
+        .opinions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .opinion-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #007bff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .opinion-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .opinion-content p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .opinion-author {
+            display: block;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* CTAセクション */
+        .cta-section {
+            background: linear-gradient(135deg, #003366, #004d99);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+        }
+
+        .cta-content h2 {
+            color: #fff;
+            border: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-section .btn-outline {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .cta-section .btn-outline:hover {
+            background: #fff;
+            color: #003366;
+        }
+
+        /* フッター */
+        .site-footer {
+            background: #003366;
+            color: #fff;
+            padding: 3rem 1rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-social {
+            margin: 2rem 0;
+        }
+
+        .footer-info {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ユーティリティクラス */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .lead-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .main-navigation ul {
+                display: none;
+            }
+            
+            .content-section {
+                padding: 1rem;
+            }
+            
+            .policy-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .download-icon {
+                margin: 0 0 1rem 0;
+            }
+            
+            .opinions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-large {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* スクロール時のスムースな動作 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="site-title">暮らしの再生</a>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="#policy">主要政策</a></li>
+                    <li><a href="#profile">プロフィール</a></li>
+                    <li><a href="#downloads">ダウンロード</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1>暮らしの再生</h1>
+            <p class="tagline">新時代の、扉をあける。</p>
+            <p class="hero-description">
+                皆さまの暮らしを守り、未来へつなげるために。<br>
+                いま政治を変えなければ、この子たちの時代に間に合わない。
+            </p>
+            
+            <!-- ソーシャルリンク -->
+            <div class="social-links">
+                <a href="#" title="YouTube公式チャンネル">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" title="X公式アカウント">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="#" title="Instagram公式アカウント">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" title="Facebook公式ページ">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <!-- 暮らしの再生ビデオセクション -->
+        <section class="content-section video-section">
+            <h2>暮らしの再生（ビデオ）</h2>
+            <div class="video-embed">
+                <div class="video-placeholder">
+                    <div>
+                        <i class="fas fa-play" style="font-size: 3rem; margin-bottom: 1rem;"></i><br>
+                        動画を再生
+                    </div>
+                </div>
+            </div>
+            <p class="text-center mt-1">※動画で私たちの取り組みをご紹介しています。</p>
+        </section>
+
+        <!-- 暮らしの再生の概要 -->
+        <section class="content-section" id="policy">
+            <h2>暮らしの再生の概要</h2>
+            <p class="lead-text">
+                暮らしの再生は、地域の皆さまの声をもとに、より良い社会を目指す取り組みです。<br>
+                物価高や少子高齢化など、さまざまな課題に向き合い、安心して暮らせる未来を共に創ります。
+            </p>
+            
+            <div class="policy-highlights">
+                <div class="policy-item">
+                    <h3><i class="fas fa-shield-alt"></i> くらしを守る物価高への対応</h3>
+                    <p>物価高の中で生活費の高騰に苦しむ方々を支援し、安定した暮らしを支えます。</p>
+                </div>
+                
+                <div class="policy-item">
+                    <h3><i class="fas fa-chart-line"></i> 経済のダイナミズムの回復</h3>
+                    <p>「出る杭を伸ばす」「失敗を許容する」寛容の精神とダイナミズムを日本社会に取り戻します。</p>
+                </div>
+                
+                <div class="policy-item">
+                    <h3><i class="fas fa-gavel"></i> 令和の政治改革</h3>
+                    <p>政治の不透明なおカネの流れを断ち切り、政治の信頼回復に取り組みます。</p>
+                </div>
+                
+                <div class="policy-item">
+                    <h3><i class="fas fa-unlock"></i> 聖域なき規制改革</h3>
+                    <p>生活者目線で、柔軟に多様な選択が可能な制度の整備を図ります。</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-2">
+                <a href="#contact" class="btn btn-primary btn-large">参加申込はこちら</a>
+                <a href="#policy" class="btn btn-outline">主要政策を詳しく見る</a>
+            </div>
+        </section>
+
+        <!-- ダウンロードセクション -->
+        <section class="content-section" id="downloads">
+            <h2>ダウンロード</h2>
+            <p class="section-description">講演・取材依頼の方は、下記よりプロフィールPDF、画像をダウンロードしてお使いください。</p>
+            
+            <div class="download-grid">
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>プロフィールPDF（日本語）</h3>
+                        <p>政治家プロフィール詳細資料</p>
+                        <span class="file-size">PDF：577KB</span>
+                        <a href="#" class="btn">ダウンロード</a>
+                    </div>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>Profile（English）</h3>
+                        <p>政治家プロフィール（英語版）</p>
+                        <span class="file-size">PDF：73KB</span>
+                        <a href="#" class="btn">Download</a>
+                    </div>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>ダウンロード用広報写真</h3>
+                        <p>高解像度広報写真集</p>
+                        <span class="file-size">ZIP：5.3MB</span>
+                        <a href="#" class="btn">ダウンロード</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 暮らしの再生会議の写真 -->
+        <section class="content-section">
+            <h2>暮らしの再生会議</h2>
+            <p class="section-description">地域の皆さまとの対話を重視し、定期的に「暮らしの再生会議」を開催しています。</p>
+            
+            <div class="photo-gallery">
+                <div class="photo-item">
+                    <span>会議の様子1</span>
+                </div>
+                <div class="photo-item">
+                    <span>会議の様子2</span>
+                </div>
+                <div class="photo-item">
+                    <span>会議の様子3</span>
+                </div>
+                <div class="photo-item">
+                    <span>会議の様子4</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 意見セクション -->
+        <section class="content-section">
+            <h2>こんな意見が寄せられています</h2>
+            <p class="section-description">暮らしの再生会議や日々の活動の中で、多くの貴重なご意見をいただいています。</p>
+            
+            <div class="opinions-grid">
+                <div class="opinion-item">
+                    <div class="opinion-content">
+                        <p>「子育て支援をもっと充実させてほしい。保育園の待機児童問題を早急に解決してください。」</p>
+                        <span class="opinion-author">30代女性・会社員</span>
+                    </div>
+                </div>
+                
+                <div class="opinion-item">
+                    <div class="opinion-content">
+                        <p>「高齢者が安心して暮らせる街づくりを。医療費の負担軽減も検討してほしい。」</p>
+                        <span class="opinion-author">60代男性・自営業</span>
+                    </div>
+                </div>
+                
+                <div class="opinion-item">
+                    <div class="opinion-content">
+                        <p>「若者の雇用を増やしてほしい。正社員として働ける環境を整えてください。」</p>
+                        <span class="opinion-author">20代男性・大学生</span>
+                    </div>
+                </div>
+                
+                <div class="opinion-item">
+                    <div class="opinion-content">
+                        <p>「物価高に対する具体的な支援策を。家計の負担が本当に厳しいです。」</p>
+                        <span class="opinion-author">40代女性・主婦</span>
+                    </div>
+                </div>
+                
+                <div class="opinion-item">
+                    <div class="opinion-content">
+                        <p>「地域の防災対策を強化してほしい。安心して住み続けられる町にしてください。」</p>
+                        <span class="opinion-author">50代男性・公務員</span>
+                    </div>
+                </div>
+                
+                <div class="opinion-item">
+                    <div class="opinion-content">
+                        <p>「教育環境の改善に力を入れて。子どもたちの未来のために投資してください。」</p>
+                        <span class="opinion-author">40代女性・教員</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-2">
+                <a href="#contact" class="btn btn-outline">ご意見・ご要望をお寄せください</a>
+            </div>
+        </section>
+
+        <!-- 党員募集セクション -->
+        <section class="content-section cta-section" id="contact">
+            <div class="cta-content">
+                <h2>私たちの挑戦に、あなたの力を</h2>
+                <p class="cta-description">
+                    希望にあふれ、誇りある日本を創り上げ、次の世代へと引き渡していく責任を、私たちは全力で果たしていきます。<br>
+                    ぜひサポーターになって、ともに日本の明日を切り拓いていきましょう。
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary btn-large">サポーター募集について詳しく見る</a>
+                    <a href="#" class="btn btn-outline">お問い合わせ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- ソーシャルメディアリンク -->
+            <div class="footer-social">
+                <h3>公式SNS</h3>
+                <div class="social-links">
+                    <a href="#" title="YouTube公式チャンネル">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" title="X公式アカウント">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="#" title="Instagram公式アカウント">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" title="Facebook公式ページ">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- サイト情報 -->
+            <div class="footer-info">
+                <div class="contact-info">
+                    <h4>暮らしの再生</h4>
+                    <p>
+                        〒100-0000 東京都千代田区○○○○<br>
+                        ○○○ビル○○○号室<br>
+                        TEL: 03-0000-0000
+                    </p>
+                </div>
+                
+                <p style="margin: 2rem 0;">
+                    <a href="#" style="color: #fff; margin: 0 1rem;">個人情報保護方針</a>
+                    <a href="#" style="color: #fff; margin: 0 1rem;">サイトポリシー</a>
+                </p>
+                
+                <p class="copyright">
+                    Copyright(C) 2024 暮らしの再生 All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ヘッダーの背景透明度調整
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 51, 102, 0.95)';
+            } else {
+                header.style.background = '#003366';
+            }
+        });
+    </script>
+
+</body>
+</html>
