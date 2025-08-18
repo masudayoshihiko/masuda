@@ -25,7 +25,7 @@
             font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: url('masuda_back.png') center/contain no-repeat fixed;
+            background: url('masuda_back.png') left center/cover no-repeat fixed;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -565,10 +565,24 @@
         }
 
         /* タブレット・デスクトップ用の最小幅設定 */
-        @media (min-width: 769px) {
+        @media (min-width: 1200px) {
+            body {
+                background: url('masuda_back.png') left center/contain no-repeat fixed;
+            }
             .mobile-container {
                 min-width: 400px;
                 max-width: 500px;
+            }
+        }
+
+        /* タブレット用（中間サイズ） */
+        @media (min-width: 769px) and (max-width: 1199px) {
+            body {
+                background: url('masuda_back.png') left center/contain no-repeat fixed;
+            }
+            .mobile-container {
+                min-width: 350px;
+                max-width: 450px;
             }
         }
 
@@ -607,7 +621,7 @@
                 left: 0;
                 width: 100vw;
                 height: 100vh;
-                background: url('masuda_back.png') center/cover no-repeat;
+                background: url('masuda_back.png') left center/cover no-repeat;
                 z-index: -1;
                 animation: heroImageScale 3s ease-out forwards;
             }
