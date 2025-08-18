@@ -621,8 +621,9 @@
                 left: 0;
                 width: 100vw;
                 height: 100vh;
-                background: url('masuda_back.png') 0% center no-repeat;
-                background-size: 150% auto;
+                /* 左側を優先表示しつつ、縦横比は保持。右側をクロップ */
+                background: url('masuda_back.png') left center no-repeat;
+                background-size: cover;
                 z-index: -1;
                 animation: heroImageScale 3s ease-out forwards;
             }
