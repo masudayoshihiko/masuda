@@ -623,10 +623,9 @@
             .hero-top-image {
                 display: block;
                 width: 100%;
-                height: auto;
-                aspect-ratio: 16 / 9; /* 高さを抑制しつつ見栄え良く */
-                object-fit: cover; /* トリミング前提で比率維持 */
-                object-position: center center; /* 中央を優先表示 */
+                height: 62vh; /* 上下が切れすぎない範囲で縦を拡大 */
+                object-fit: cover; /* 比率維持でトリミング */
+                object-position: center 20%; /* もう少し下部をカット（上寄せ） */
                 margin: 0 auto 1rem;
             }
 
