@@ -625,7 +625,7 @@
                 background-size: cover; /* 縦横比維持でトリミング */
                 background-position: left center; /* 左側優先 */
                 z-index: -1;
-                animation: heroImageScale 3s ease-out forwards;
+                animation: heroImageScale 3s linear forwards; /* 終盤が加速しないよう一定速度に */
             }
 
             @keyframes heroImageScale {
