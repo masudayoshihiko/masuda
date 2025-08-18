@@ -620,17 +620,17 @@
                 top: 0;
                 left: 0;
                 width: 100vw; /* 画面幅いっぱい */
-                height: 100vh;
-                overflow: hidden; /* 右側をクリップ */
+                height: auto; /* 画像の高さに追従 */
                 z-index: -1;
+                pointer-events: none;
             }
 
             .hero-background-image img {
-                width: 100%;   /* ラッパーと同じ幅 */
-                height: 100%;  /* 画面高いっぱい */
-                object-fit: cover; /* 縦横比維持で全面カバー（右側のみトリミング） */
+                width: 100vw;   /* 横幅いっぱい */
+                height: auto;   /* 縦横比維持で高さ自動 */
+                object-fit: contain; /* 切れないように収める */
                 object-position: left center; /* 左側を優先表示 */
-                animation: heroImageScale 3s ease-out forwards;
+                animation: none; /* 切れの原因となる拡大縮小を無効化 */
                 display: block;
             }
 
