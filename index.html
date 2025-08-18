@@ -604,12 +604,12 @@
             
             .hero-section {
                 position: relative;
-                min-height: 100vh;
+                min-height: 60vh; /* セクション自体をコンパクトに */
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background: transparent;
-                padding: 0;
+                padding: 2vh 0 0; /* 上部に少しだけ余白 */
                 overflow: hidden;
             }
 
@@ -618,9 +618,9 @@
                 display: block;
                 position: fixed;
                 left: 0;
-                top: 15vh; /* 上に白余白 */
+                top: 20vh; /* 上余白を広げる */
                 width: 100vw;
-                height: 70vh; /* 画像エリアを短く */
+                height: 40vh; /* 画像エリアをさらに短く */
                 background: url('masuda_back.png') left center no-repeat;
                 background-size: cover; /* 縦横比維持でトリミング */
                 background-position: left center; /* 左側優先 */
@@ -644,13 +644,18 @@
             }
 
             .hero-content {
-                background: rgba(76, 7, 108, 0.8);
-                border-radius: 15px;
-                padding: 2rem;
-                margin: 2rem;
+                background: rgba(76, 7, 108, 0.78);
+                border-radius: 14px;
+                padding: 1rem 1.2rem;
+                width: min(88%, 520px); /* 紫のカードを小さく */
+                margin: 0 auto; /* センター配置 */
                 animation: heroContentFadeIn 3s ease-out forwards;
                 opacity: 0;
             }
+
+            .hero-content h1 { font-size: 1.6rem; }
+            .hero-content .tagline { font-size: 0.95rem; }
+            .hero-description { font-size: 0.9rem; }
 
             @keyframes heroContentFadeIn {
                 0% {
