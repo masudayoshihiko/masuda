@@ -578,7 +578,8 @@
         /* タブレット用（中間サイズ） */
         @media (min-width: 769px) and (max-width: 1199px) {
             body {
-                background: url('masuda_back.png') left center/contain no-repeat fixed;
+                /* 左半分を主体に見せるため、トリミング前提のcover */
+                background: url('masuda_back.png') left center/cover no-repeat fixed;
             }
             .mobile-container {
                 min-width: 350px;
@@ -1115,14 +1116,18 @@
             }
         }, { passive: false });
 
-        // パララックス効果（軽量版）
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-section');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
+        // パララックス効果（軽量版）: モバイル・タブレットでは無効化
+        (function() {
+            const enableParallax = window.matchMedia('(min-width: 1200px)').matches;
+            if (!enableParallax) return;
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-section');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+            });
+        })();
 
         // モバイルメニューのトグル
         document.addEventListener('DOMContentLoaded', function() {
