@@ -583,8 +583,8 @@
         /* タブレット用（中間サイズ） */
         @media (min-width: 769px) and (max-width: 1199px) {
             body {
-                /* 左半分を主体に見せるため、トリミング前提のcover */
-                background: url('masuda_back.png') left center/cover no-repeat fixed;
+                /* 上下が切れないようにPCと同様のcontainに戻す */
+                background: url('masuda_back.png') left center/contain no-repeat fixed;
             }
             .mobile-container {
                 min-width: 350px;
@@ -623,9 +623,10 @@
             .hero-top-image {
                 display: block;
                 width: 100%;
-                height: 62vh; /* 上下が切れすぎない範囲で縦を拡大 */
-                object-fit: cover; /* 比率維持でトリミング */
-                object-position: center 20%; /* もう少し下部をカット（上寄せ） */
+                height: auto;
+                max-height: 62vh; /* 画面が小さい時の縦の上限 */
+                object-fit: contain; /* 小さい画面で左右が切れないように */
+                object-position: center top; /* 上寄せでロゴと顔を確保 */
                 margin: 0 auto 1rem;
             }
 
