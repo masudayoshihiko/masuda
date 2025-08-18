@@ -613,25 +613,19 @@
                 overflow: hidden;
             }
 
-            /* スマホ用：画像の左半分のみを表示（縦横比維持） */
+            /* スマホ用の全画面画像 */
             .hero-background-image {
                 display: block;
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100vw; /* 画面幅いっぱい */
-                height: auto; /* 画像の高さに追従 */
+                width: 100vw;
+                height: 100vh;
+                background: url('masuda_back.png') left center no-repeat;
+                background-size: cover; /* 縦横比維持で全画面カバー */
+                background-position: left center; /* 左側を優先表示 */
                 z-index: -1;
-                pointer-events: none;
-            }
-
-            .hero-background-image img {
-                width: 100vw;   /* 横幅いっぱい */
-                height: auto;   /* 縦横比維持で高さ自動 */
-                object-fit: contain; /* 切れないように収める */
-                object-position: left center; /* 左側を優先表示 */
-                animation: none; /* 切れの原因となる拡大縮小を無効化 */
-                display: block;
+                animation: heroImageScale 3s ease-out forwards;
             }
 
             @keyframes heroImageScale {
@@ -762,7 +756,7 @@
         <div class="mobile-content">
             <!-- ヒーローセクション -->
             <section class="hero-section" id="home">
-                <div class="hero-background-image"><img src="masuda_back.png" alt="トップ画像"></div>
+                <div class="hero-background-image"></div>
                 <div class="hero-content">
                     <h1>暮らしの再生</h1>
                     <p class="tagline">新時代の、扉をあける。</p>
